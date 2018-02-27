@@ -11,8 +11,10 @@ port =  int(raw_input("What is the port number?"))
 
 server.connect((ip_address, port))
 
-# Continue indefinitely. 
 while True:
+    """
+    Continue indefinitely for the connection.
+    """
     sockets = [sys.stdin, server]
  
     read_sockets,write_socket, error_socket = select.select(sockets,[],[])

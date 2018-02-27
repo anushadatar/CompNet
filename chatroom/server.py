@@ -45,6 +45,12 @@ def client_thread(connection, address):
                 continue
 
 def broadcast(message, connection):
+    """
+    Sends each client the message sent and remove any invalid connections.
+    
+    message : The message to be broadcast.
+    connection : The specific instance.
+    """
     for client in clients:
         if client!=connection:
             try:
@@ -56,6 +62,9 @@ def broadcast(message, connection):
  
 # kick off client threads for each connection
 while True:
+    """
+    Start up the server until the session is cancelled.
+    """
     connection, address = server.accept()
     clients.append(connection)
     print address[0] + " has been connected"
