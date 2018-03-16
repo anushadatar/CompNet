@@ -1,0 +1,22 @@
+def translateFromASCII(bits):
+    
+    message = ""
+    
+    while len(bits) >= 7:
+        
+        # Grab the current byte
+        byte = bits[:7]
+        
+        # Remove the current byte from the array
+        bits = bits[7:]
+        
+        # Convert the byte into a base 2 integer
+        byte = int(''.join(byte), 2)
+        
+        # Convert from ASCII base 2 into chr
+        char = chr(byte)
+        
+        # Add to <message>
+        message += char
+        
+    return message

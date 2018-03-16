@@ -1,0 +1,49 @@
+
+"""
+encodeData(data)
+
+Function that takes in a string ('data') and converts it into a list
+of bits.  It takes raw text, breaks it into characters, converts
+those characters into binary ASCII, and then returns the binary as a
+list of 1's and 0's.
+"""
+
+def encodeData(data):
+
+    # Turn the text into a list of chrs
+    data = list(data)
+
+    # Turn the list of chrs into a list of binary
+    temp = []
+    for char in data:
+        # Conversion: chr --> ASCII --> binary
+        temp.append("{0:b}".format(int(ord(char))))
+    data = temp
+
+    # Make sure all the binary values (bytes) have the same length (7 bits)
+    temp = []
+    for byte in data:
+        if len(byte) > 7:
+            print("Byte length error!")
+            break
+        while len(byte) < 7:
+            byte = "0"+byte
+        temp.append(byte)
+    data = temp
+    
+    # Convert the binary terms into a single string
+    dataString = ""
+    for byte in data:
+        dataString += byte
+    
+    # Convert the string into a list of single numbers
+    data = list(dataString)
+    
+    print("Data encoded")
+
+    return data
+
+
+
+
+
